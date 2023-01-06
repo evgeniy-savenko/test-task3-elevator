@@ -1,7 +1,23 @@
 <script setup>
+import {onMounted} from 'vue';
 import {useElevatorStore} from './stores/elevator';
 
 const elevatorStore = useElevatorStore();
+onMounted(() => {
+  if (localStorage.getItem('elevCallNow')) {
+    elevatorStore.elevCallNow = localStorage.getItem('elevCallNow');
+  } else {
+    localStorage.setItem('elevCallNow', JSON.stringify(elevatorStore.elevCallNow));
+  }
+  if (JSON.parse(localStorage.getItem('elevCallAll')).length != 0) {
+    elevatorStore.elevCallAll = this.calls.concat(
+      JSON.parse(localStorage.getItem('elevCallAll'))
+    );
+  } else {
+    elevatorStore.elevCallAll.length = 0;
+  }
+  elevatorStore.moveElevator();
+});
 </script>
 
 <template>

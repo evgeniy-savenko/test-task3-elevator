@@ -2,6 +2,8 @@
 
 Сделано слегка колхозно и стор тут как таковой не нужен. Сделал с ним чтобы просто продемонстрировать что умею с ним работать.
 
+![Демонтрация работы приложения](public/demonstration.gif)
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup

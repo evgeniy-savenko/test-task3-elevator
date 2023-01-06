@@ -21,6 +21,7 @@ export const useElevatorStore = defineStore('elevator', () => {
     document.getElementById(`elev${elevCallNow.value}`).style.borderColor = 'black';
     if (elevCallAll.value.length > 0) {
       elevCallNow.value = elevCallAll.value[0];
+      localStorage.setItem('elevCallNow', elevCallNow.value);
       moveElevator();
     }
   };
@@ -38,6 +39,7 @@ export const useElevatorStore = defineStore('elevator', () => {
 
   const stopElevator = () => {
     elevCallAll.value.shift();
+    localStorage.setItem('elevCallAll', JSON.stringify(elevCallAll.value));
     document.getElementById(`elev${elevCallNow.value}`).style.borderColor = 'red';
     setTimeout(setCalls, 3000);
   };
